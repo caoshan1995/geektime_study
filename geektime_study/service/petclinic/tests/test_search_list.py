@@ -1,6 +1,6 @@
-
 from service.petclinic.api.owners import Owners
 from copy import copy
+
 from service.petclinic.api.test_data import owner_common
 
 
@@ -41,10 +41,8 @@ class TestSearchList:
         self.owners.clear("xiao")
         self.owners.clear("zhang")
 
-
     def test_search_list_query_null(self):
         r = self.owners.list("")
-
 
     def test_search_list_result_null(self):
         r = self.owners.list("liu")
@@ -56,9 +54,6 @@ class TestSearchList:
         assert r[0].lastName == "zhang"
         assert r[0].city == "深圳"
 
-
     def test_search_list_result_multile(self):
         r = self.owners.list("xiao")
         assert len(r) > 1
-
-

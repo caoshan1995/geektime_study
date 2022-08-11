@@ -44,3 +44,12 @@ class TestUpdateOwner:
         owner1 = Owner(**owner)
         r = self.owners.update(self.owner_id, owner1)
         assert r.status_code == 204
+
+    @pytest.mark.parametrize("owner", [
+        {"telephone": "188000000011", "city": "上海", "address": "xxx市xxx区xxx街道", "firstName": "li",
+         "lastName": "xiao"},
+    ])
+    def test_update_fail(self, owner):
+        owner1 = Owner(**owner)
+        r = self.owners.update(self.owner_id, owner1)
+        assert r.status_code == 400
